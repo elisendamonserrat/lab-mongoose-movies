@@ -1,7 +1,8 @@
-<h2>Find All the Celebrities Listed Here!</h2>
+<h1>Find All the Celebrities Listed Here!</h1>
 
 {{#each celebrities}}
   <ul>
-    <li><b>{{name}}</b></li>
+    <li><b>{{name}}</b> - <a href="/celebrities/{{_id}}">See more details</a>
+    </li>
   </ul>
 {{/each}}
