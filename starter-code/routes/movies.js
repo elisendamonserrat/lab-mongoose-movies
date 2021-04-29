@@ -9,14 +9,30 @@ router.get('/movies', (req, res, next) => {
   Movie.find()
    .then(movies => res.render("movies/index", { movies }))
    .catch(error => next(error))
+});
+
+//Ads a new Movie
+router.get('/movies/new', (req, res, ) => {
+  res.render('movies/new');
 })
 
+router.post('/movies', (req, res, next) => {
+  const { title, genre, plot } = req.body;
+
+  Movie.create({title, genre, plot})
+   .then(newMovie => console.log(`A new movie was added, it's title is ${newMovie.title}`))
+   .then(() => res.redirect('/movies'))
+   .catch(error => next(error));
+})
+
+//Shows Movie Details Page
 router.get('/movies/:id', (req, res, next) => {
   const { id } = req.params;
 
   Movie.findById(id)
    .then(movie => res.render('movies/show', { movie }))
    .catch(error => next(error));
-})
+});
+
 
 module.exports = router;
