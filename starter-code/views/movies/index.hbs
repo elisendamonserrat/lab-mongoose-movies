@@ -4,6 +4,10 @@
   <ul>
     <li><b>{{title}}</b> - <a href="/movies/{{_id}}">See more details</a>
     </li>
+    <br>
+    <form action="/movies/{{_id}}/delete" method="post">
+      <button type="submit">Delete</button>
+    </form>
   </ul>
 {{/each}}
 

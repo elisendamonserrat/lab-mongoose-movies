@@ -34,5 +34,15 @@ router.get('/movies/:id', (req, res, next) => {
    .catch(error => next(error));
 });
 
+//Delete Movie
+router.post('/movies/:id/delete', (req, res, next) => {
+  const { id } = req.params;
+
+  Movie.findByIdAndDelete(id)
+   .then(deletedMovie => console.log(`The ${deletedMovie.title} has been deleted`))
+   .then(() => res.redirect('/movies'))
+   .cacth((error) => next(error))
+})
+
 
 module.exports = router;
